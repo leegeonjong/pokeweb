@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="categorystyle.css">
+
+    <title>포켓몬 도감</title>
+
+  </head>
+<body>
+  <header>
+    <div class="container">
+    <!-- 헤더 -->
+    <nav class="headB">
+      <ul class="menu">
+        <li class="logo-container"><a class = 'wall' href="main.html"><img class="logo" src="doc/pokemon_logo.png" alt="대체 텍스트"></a></li>
+        <li><a href="category.html">도감</a></li>
+        <li><a href="detail.html">상세검색</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="contact.html">문의</a></li>
+      </ul>
+    </nav>
+    <ul class="loginbar">
+      <li><a href="login.html"><img class="ball" src="doc/monsterball.png" alt="대체 텍스트"><br>로그인</a></li>
+      <li><a href="#"><img class="search" src="doc/search.png" alt="대체 텍스트"><br>검색</a></li> 
+    </ul>
+    </div>
+    <div class ='blackbox'></div>
+  </header>
+  <section class="conA">
+  <h1><img class="logoball" src="doc/monsterball.png" alt="">포켓몬 도감</h1>
+  </section>
+  <!-- 버튼 -->
+  <section class="conB">
+    <h1>Find Your Pokemon</h1>
+    <br>
+    <div class="conBbtn">
+  <button onclick="load1()">1세대</button>
+  <button onclick="load2()">2세대</button>
+  <button onclick="load3()">3세대</button>
+  <button onclick="load4()">4세대</button>
+  <button onclick="load5()">5세대</button>
+  <button onclick="load6()">6세대</button>
+  <button onclick="load7()">7세대</button>
+  <button onclick="load8()">8세대</button>
+  </div>
+  </section>
+  <div class = 'table'>
+  <table id="pokemonTable" margin:center></table>
+</div>
+ 
+  <script>
+    let start = 1;
+    let end = 151;
+    async function fetchPokemons() {
+  let poketable = [];
+
+  function zeronum(num) {
+    return num.toString().padStart(4, "0");
+  }
+
+  for (let id = start; id <= end; id++) {
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}/`);
+    const data = await response.json();
+    const pokemonName = data.names.find(nameObj => nameObj.language.name === "ko").name;
+    const pokemonImage = `https://data1.pokemonkorea.co.kr/newdata/pokedex/mid/${zeronum(id)}01.png`;
+    poketable.push({pokeid:id ,name: pokemonName, image: pokemonImage });
+  }
+
+  // 빈 객체 추가
+  while (poketable.length < 180) {
+    poketable.push({});
+  }
+
+  let tr, td, row, col;
+  for (row = 0; row < (((end-start+1)/6)); row++) {
+    tr = document.createElement("tr");
+    for (col = 0; col < 6; col++) {
+      td = document.createElement("td");
+
+
+    if (poketable[row * 6 + col].pokeid) {
+        let img = document.createElement("img"); // 새로운 이미지 요소를 만든다
+        img.src = poketable[row * 6 + col].image; // src 속성을 이미지 URL로 설정
+        img.alt = poketable[row * 6 + col].name; // alt 속성을 포켓몬 이름으로 설정
+        td.appendChild(img); // 이미지를 셀에 추가
+        td.appendChild(document.createElement("br")); // 줄바꿈을 셀에 추가합니다.
+        td.appendChild(document.createTextNode(`NO. ${zeronum(poketable[row * 6 + col].pokeid)}  `)); // 번호를 셀에 추가
+        td.appendChild(document.createElement("br"));
+        td.appendChild(document.createTextNode(poketable[row * 6 + col].name)); // 이름을 셀에 추가
+      }
+
+      tr.appendChild(td);
+    }
+    pokemonTable.appendChild(tr);
+  }
+}
+    function load1() {
+       start = 1; end = 151;
+     pokemonTable.innerHTML = ""; 
+     fetchPokemons().catch(error => console.error(error));
+    }
+    function load2() {
+       start = 152; end = 251;
+       pokemonTable.innerHTML = ""; 
+     fetchPokemons().catch(error => console.error(error)); 
+    }
+    function load3() {start = 252; end = 386;
+       pokemonTable.innerHTML = ""; 
+     fetchPokemons().catch(error => console.error(error)); 
+    }
+    function load4() {start = 387; end = 493;
+       pokemonTable.innerHTML = ""; 
+     fetchPokemons().catch(error => console.error(error)); 
+    }
+    function load5() {start = 494; end = 649;
+       pokemonTable.innerHTML = ""; 
+     fetchPokemons().catch(error => console.error(error)); 
+    }
+    function load6() {start = 650; end = 721;
+       pokemonTable.innerHTML = ""; 
+     fetchPokemons().catch(error => console.error(error)); 
+    }
+    function load7() {start = 722; end = 809;
+       pokemonTable.innerHTML = ""; 
+     fetchPokemons().catch(error => console.error(error)); 
+    }
+    function load8() {start = 810; end = 905;
+       pokemonTable.innerHTML = ""; 
+     fetchPokemons().catch(error => console.error(error)); 
+    }
+    function load9() {start = 906; end = 1010;
+       pokemonTable.innerHTML = ""; 
+     fetchPokemons().catch(error => console.error(error)); 
+    }
+    
+
+fetchPokemons().catch(error => console.error(error));
+  </script>
+  
+<!-- 푸터 -->
+<footer>
+  <div class = "container">
+    <h2>GOTCHA.inc</h2>
+    <div class="footerbar">
+      <span> | </span>
+      <span><a href="">회사소개</a></span>
+      <span> | </span>
+      <span><a href="">사업내용</a></span>
+      <span> | </span>
+      <span><a href="">이용약관</a></span>
+      <span> | </span>
+      <span><a href="">개인정보처리</a></span>
+      <span> | </span>
+      <span><a href="">고객센터</a></span>
+      <span> | </span>
+    </div>
+  </div>
+  <div class = "footer2container">
+    <h5 class footername>(주)GOTCHA  대표이사:이건종<br><br>
+      개인정보관리책임자: 이건종 사업자등록번호:113-86-07676</h5>
+    <div class="footerbar2">
+      <span><a href=""><img src="doc/facebook.png"></a></span>
+      <span><a href=""><img src="doc/youtube.png"></a></span>
+      <span><a href=""><img src="doc/twitter.png"></a></span>
+      <span><a href=""><img src="doc/insta.png"></a></span>
+      <span><a href=""><img src="doc/pikalogo.png"></a></span>
+    </div>
+  </div>
+  </footer>
+</body>
+</html>

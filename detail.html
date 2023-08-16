@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="detailcss.css">
+  <title>상세정보 </title>
+</head>
+<body>
+  <header>
+    <div class="container">
+    <!-- 헤더 -->
+    <nav class="headB">
+      <ul class="menu">
+        <li class="logo-container"><a class = 'wall' href="main.html"><img class="logo" src="doc/pokemon_logo.png" alt="대체 텍스트"></a></li>
+        <li><a href="category.html">도감</a></li>
+        <li><a href="detail.html">상세정보</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="contact.html">문의</a></li>
+      </ul>
+    </nav>
+        <ul class="loginbar">
+          <li><a href="login.html"><img class="ball" src="doc/monsterball.png" alt="대체 텍스트"><br>로그인</a></li>
+          <li><a href="#"><img class="search" src="doc/search.png" alt="대체 텍스트"><br>검색</a></li> 
+        </ul>
+    </div>
+    <div class ='blackbox'></div>
+  </header>
+  <!-- conA -->
+  <section class="conA">
+    <img src="doc/superball.png" alt=""><h1>포켓몬 상세정보</h1>
+</section>
+<!-- conB -->
+<section class="conB">
+  <img src="doc/masterball.png" alt=""> <span>포켓몬을 검색하세요</span>
+  <div class="conBa">  
+  <input type="text" id="pokemonInput" placeholder="포켓몬의 도감번호를 입력하세요">
+  <div class="space"></div>
+  <button id="searchButton" onclick="displayDetail()"><img class ="searchwhite" src="doc/searchwhite.png" alt=""></button>
+</div>
+</section>
+  <!-- 테이블 -->
+  <section class="conC">
+  <table>
+    <tr>
+      <td class= "tableimg" colspan="2" rowspan="3"><img id="myImage" src="doc/question.png" alt="이미지"></td>
+      <td colspan="2">NO.<span class= "num" id ="pokemonNum">????</span>
+       <br> <span class="name" id ="pokemonName">????</span>
+      </td>
+    </tr>
+    <tr>
+      <td class = "pokemonid" >  <p>분류  <br></p><span  id ="pokemonSpecies">????</span></td>
+      <td class="type" > <p>타입 <br> </p><span id ="pokemonType">????</span><br><br>
+      <img class="pokeimg" id ="pokemontypeimage" src="doc/white.png" alt=""> <img class="pokeimg" id ="pokemontypeimage2" src="doc/white.png" alt="">
+      </td>
+    </tr>
+    <tr>
+      <td class="height" ><p>키:  <br></p><span id ="pokemonHeight">??</span><span>m</span></td>
+      <td class="weight"><p>몸무게 <br></p><span id ="pokemonWeight">??</span><span>kg</span></td>
+    </tr>
+    <tr>
+      <td class = "explanation" colspan="4"><p> <span id ="pokemonText"></span></p></td>
+    </tr>
+  </table>
+</section>
+  <script>
+    const pokemonList = document.getElementById("pokemonList");
+    const pokemonInput = document.getElementById("pokemonInput");
+    const searchButton = document.getElementById("searchButton");
+    function zeronum(num) {
+    return num.toString().padStart(4, "0");
+    }
+
+    function modifyweight(input) {
+    const str = input.toString();
+     if (str.length === 2) {
+      return `${str[0]}.${str[1]}`;
+  } else if (str.length >= 3) {
+    return `${str.slice(0, str.length-1)}.${str[str.length-1]}`;
+  } else {
+    return input;
+  }
+}
+    function koreantype(type){
+      let koreantype=''
+      switch(type){
+        case 'normal' : koreantype ="노말"; break;
+        case 'fire': koreantype ="불꽃"; break;
+        case 'water': koreantype ="물"; break;
+        case 'grass': koreantype ="풀"; break;
+        case 'electric': koreantype ="전기"; break;
+        case 'ice': koreantype ="얼음"; break;
+        case 'fighting': koreantype ="격투"; break;
+        case 'poison': koreantype ="독"; break;
+        case 'ground': koreantype ="땅"; break;
+        case 'flying': koreantype ="비행"; break;
+        case 'psychic' : koreantype ="에스퍼"; break;
+        case 'bug': koreantype ="벌레"; break;
+        case 'rock' : koreantype ="바위"; break;
+        case 'ghost' : koreantype ="고스트"; break;
+        case 'dragon' : koreantype ="드래곤"; break;
+        case 'dark': koreantype ="악"; break;
+        case 'steel': koreantype ="강철"; break;
+        case 'fairy': koreantype ="페어리"; break;
+        
+      }
+    
+      return koreantype;
+    }
+      function typeimage(koreatype){
+      let typeimage=''
+      switch(koreatype){
+        case 'normal' : typeimage ="doc/noraml.png"; break;
+        case 'fire': typeimage ="doc/fire.png"; break;
+        case 'water': typeimage ="doc/water.png"; break;
+        case 'grass': typeimage ="doc/grass.png"; break;
+        case 'electric': typeimage ="doc/electric.png"; break;
+        case 'ice': typeimage ="doc/ice.png"; break;
+        case 'fighting': typeimage ="doc/fighting.png"; break;
+        case 'poison': typeimage ="doc/poison.png"; break;
+        case 'ground': typeimage ="doc/ground.png"; break;
+        case 'flying': typeimage ="doc/flying.png"; break;
+        case 'psychic' : typeimage ="doc/psychic.png"; break;
+        case 'bug': typeimage ="doc/bug.png"; break;
+        case 'rock' : typeimage ="doc/rock.png"; break;
+        case 'ghost' : typeimage ="doc/ghost.png"; break;
+        case 'dragon' : typeimage ="doc/dragon.png"; break;
+        case 'dark': typeimage ="doc/dark.png"; break;
+        case 'steel': typeimage ="doc/steel.png"; break;
+        case 'fairy': typeimage ="doc/fairy.png"; break;
+        
+      }
+      return typeimage;
+      }
+
+    
+    function displayDetail() {
+      const id = pokemonInput.value;
+      var img = document.getElementById("myImage");
+      img.src = `https://data1.pokemonkorea.co.kr/newdata/pokedex/mid/${zeronum(id)}01.png`;
+
+      const pokemonNumber = document.querySelector('#pokemonNum');
+      pokemonNumber.innerText = zeronum(id);
+
+      fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}/`)
+        .then(response => response.json())
+        .then(data => {
+          const pokemonname = data.names.find(obj => obj.language.name === "ko").name;
+          const pokemontext = data.flavor_text_entries.find(obj => obj.language.name === "ko").flavor_text;
+          const pokemonspecies = data.genera.find(obj => obj.language.name === "ko").genus;
+          pokemonName.innerHTML = pokemonname;
+          pokemonText.innerHTML = pokemontext;
+          pokemonSpecies.innerHTML = pokemonspecies;
+        })
+        .catch(error => console.error(error));
+        fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+        .then(response => response.json())
+        .then(data => {
+          let pokemonheight= "";
+          let pokemonweight = "";
+          let pokemontypes = "";
+          let type1 = "";
+          let type2 = "";
+          let type1image = "";
+          let type2image = ""; 
+          let type1imageElement = "";
+          let type2imageElement = "";
+           pokemonheight = data.height;
+           pokemonweight = data.weight;
+           pokemontypes = data.types;
+           type1 = koreantype(pokemontypes[0].type.name);
+           type2 = koreantype(pokemontypes[1] ? pokemontypes[1].type.name : null);
+           type1image = typeimage(pokemontypes[0].type.name);
+           type2image = typeimage(pokemontypes[1] ? pokemontypes[1].type.name : null);
+           type1imageElement = document.getElementById("pokemontypeimage");
+           type2imageElement = document.getElementById("pokemontypeimage2");
+          type1imageElement.src = type1image;
+          if (type2image) {
+          type2imageElement.src = type2image;
+          }
+          else{
+          type2imageElement.src = "doc/white.png";
+          }
+          pokemonHeight.innerHTML = pokemonheight;
+          pokemonWeight.innerHTML = modifyweight(pokemonweight);
+          pokemonType.innerHTML = `${type1} ${type2 ? "/ " + type2 : ""}`;
+        })
+        .catch(error => console.error(error));
+      
+    }
+
+    
+    searchButton.addEventListener("click", () => {
+      const id = pokemonInput.value;
+      fetchPokemon(id);
+    });
+  </script>
+  
+<!-- 푸터 -->
+<footer>
+  <div class = "container">
+    <h2>GOTCHA.inc</h2>
+    <div class="footerbar">
+      <span> | </span>
+      <span><a href="">회사소개</a></span>
+      <span> | </span>
+      <span><a href="">사업내용</a></span>
+      <span> | </span>
+      <span><a href="">이용약관</a></span>
+      <span> | </span>
+      <span><a href="">개인정보처리</a></span>
+      <span> | </span>
+      <span><a href="">고객센터</a></span>
+      <span> | </span>
+    </div>
+  </div>
+  <div class = "footer2container">
+    <h5 class footername>(주)GOTCHA  대표이사:이건종<br><br>
+      개인정보관리책임자: 이건종 사업자등록번호:113-86-07676</h5>
+    <div class="footerbar2">
+      <span><a href=""><img src="doc/facebook.png"></a></span>
+      <span><a href=""><img src="doc/youtube.png"></a></span>
+      <span><a href=""><img src="doc/twitter.png"></a></span>
+      <span><a href=""><img src="doc/insta.png"></a></span>
+      <span><a href=""><img src="doc/pikalogo.png"></a></span>
+    </div>
+  </div>
+  </footer>
+</body>
+</html>

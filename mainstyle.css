@@ -1,0 +1,368 @@
+@charset "UTF-8";
+a:visited{
+  color:black
+}
+a {
+  color:black;
+  text-decoration: none;
+}
+
+body {
+    margin: 0;
+    font-family: '맑은 고딕', 
+        'Apple SD Gothic Neo', sans-serif;
+}
+
+.conA {
+    text-align: center;
+    height: 110vh;
+    min-height: 450px;
+    background-color: white;
+  }
+  
+  .conA .container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .conA img {
+    height: 100%;
+  }
+  
+  .conA .container h1 {
+    position: absolute;
+    font-size: 15vw;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    top: 20%;
+    left: 50%;
+  }
+
+
+/* 콘텐츠 B : 개요 (아이콘 + 텍스트 */
+
+.conB .text {
+    text-align: center;
+}
+.conB h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+.conB p {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.8;  /* 줄높이 : font-size 의 1.8배 */
+    opacity: 0.8;
+}
+
+
+
+.pokemon:hover {
+    opacity: 1;
+  }
+  .ball:hover {
+    opacity: 1;
+  }
+  .master:hover {
+    opacity: 1;
+  }
+  .bird:hover {
+    opacity: 1;
+  }
+.conB .container {
+    padding-top: 30px;
+    padding-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+}
+
+.conB .text {
+    text-align: center;
+    width: 18%;
+    height: 200px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 60px;
+}
+.conB img{
+    height: 100px;
+    width: 100px;
+    opacity: 0.7;
+}
+
+.conC h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 65px;
+}
+
+.conC p {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.8;
+    opacity: 0.8;
+    display: flex;
+    justify-content: center; 
+}
+
+.conC {
+    background-color: rgb(230,54,62);
+    color: white;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.conC .text {
+    padding: 20px; 
+    text-align: center;
+}
+.conC h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.conD{
+    background-color: whitesmoke;
+}
+.conD p{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #e9ecef;
+    color: black;
+    font-size: large;
+  }
+  
+  .conD li {
+    width: 440px;
+    height: 400px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 30px;
+  }
+  
+  .conD img {
+    width: 440px;
+    height: 300px;
+    margin: auto;
+  }
+  /*CON E*/
+  .newvideo {
+    background-color: rgb(38, 38, 38);
+    color: white;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding: 20px; 
+    text-align: center;
+    font-size: 65px;
+}
+
+
+.conE .text {
+    padding: 20px; 
+    text-align: center;
+}
+.conE h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.conE p{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgb(38, 38, 38);
+    color: white;
+    font-size: large;
+  }
+  
+  .conE li {
+    width: 440px;
+    height: 400px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 30px;
+  }
+  
+
+  iframe{
+    width: 450px;
+    height: 350px;
+  }
+
+/*푸터*/
+footer {
+  background-color: white; 
+  padding-top: 20px; 
+  color: #fff;
+}
+
+footer .container {
+  padding :10px;
+  background-color: rgb(230,54,62);
+}
+footer h2{
+  padding-left: 100px;
+}
+.container .footerbar {
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  flex-grow: 1;
+  padding-right: 100px;
+  }
+.footerbar span{
+  margin-left: 15px;
+}
+footer .footer2container {
+  display: flex;
+  padding: 10px 10px 10px 100px;
+  background-color: rgb(191,25,50);
+}
+.footer2container h5{
+  font: size 5px; ;
+  color: white;
+}
+.footerbar2{
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  flex-grow: 1;
+  padding-right: 100px;
+}
+.footerbar2 span{
+margin-left: 15px;
+}
+
+.footerbar2 img{
+  width:50px;
+  height: 50px;
+
+  border-radius: 10px;
+}
+.footerbar a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    background-color: whitesmoke;
+    opacity: 0.9;
+  }
+  
+  .logo {
+    background-color: whitesmoke;
+    width: 170px;
+  }
+  
+  .headB ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .menu {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding: 0;
+    height: 50%;
+    width: 66.67%;
+    overflow: hidden;
+    align-items: center;
+  }
+  
+  .menu li {
+    height: 100%;
+    flex: 1;
+    background-color: whitesmoke;
+    border-radius: 15px;
+  }
+  .headB {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    align-items: center;
+    padding-left: 20px;
+  }
+  
+  .headB a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: inherit;
+    font-size: 1.5em;
+    text-decoration: none;
+  }
+  
+  .headB a:hover {
+    background-color: #D30000;
+    border-radius: 15px; 
+    color: white;
+  }
+  .headB .wall:hover {
+    background-color: whitesmoke;
+  }
+  
+  
+  .ball {
+    background-color: whitesmoke;
+    width: 50px;
+    height: px;
+    border :5px black;
+    justify-content: center;
+  }
+  .search {
+    background-color: whitesmoke;
+    width: 50px;
+    height: 50px;
+  }
+
+  .container{
+    display: flex
+  }
+
+  .loginbar {
+    display: flex;
+    flex-direction: row;
+    list-style: none; 
+    padding: 0;
+    height: 90px;
+    width: 30%; 
+    justify-content: flex-end;
+    align-items: flex-end; 
+  }
+  .loginbar li {
+    font-size: 1em;
+    margin-right: 100px;
+    text-align: center; /* 글자 정렬 */
+  }
+
+  .redbox {
+    background-color: red;
+    height: 10px;
+    width: 1920px;
+  }
+  .blackbox {
+    background-color: whitesmoke;
+    height: 10px;
+    width: 100%;
+  }
